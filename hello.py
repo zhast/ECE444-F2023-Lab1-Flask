@@ -43,6 +43,13 @@ def index():
             flash('Looks like you have changed your name!')
         session['name'] = name_form.name.data
 
+
+    if email_form.validate_on_submit():
+        old_email = session.get('email')
+        if old_email is not None and old_email != email_form.email.data:
+            flash('Looks like you have changed your email!')
+        session['email'] = email_form.email.data
+
     return render_template('index.html', name=name, email=email, name_form=name_form, email_form=email_form)
 
 
