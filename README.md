@@ -13,3 +13,6 @@ this repo is a clone of https://github.com/miguelgrinberg/flasky
 # Activity 4
 Part 2: 
 <img width="563" alt="Screenshot 2023-09-20 at 4 10 42 PM" src="https://github.com/zhast/ECE444-F2023-Lab1-Flask/assets/20625321/9c4408dc-548a-4bf6-aad7-e4fb1c9e1214">
+
+Part 3: 
+<img width="814" alt="Screenshot 2023-09-20 at 4 30 07 PM" src="https://github.com/zhast/ECE444-F2023-Lab1-Flask/assets/20625321/3821ee9d-c953-4990-9f4d-9acc5dba6014">
