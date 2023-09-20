@@ -19,3 +19,6 @@ Part 3:
 
 Part 4: 
 <img width="668" alt="Screenshot 2023-09-20 at 5 28 23 PM" src="https://github.com/zhast/ECE444-F2023-Lab1-Flask/assets/20625321/42cd98aa-c54c-4d04-bedd-7c9d47bfa8d5">
+
+Part 5: 
+<img width="727" alt="Screenshot 2023-09-20 at 5 44 36 PM" src="https://github.com/zhast/ECE444-F2023-Lab1-Flask/assets/20625321/e2b7fa7c-0224-4b46-b33b-5eea88bd93e5">
