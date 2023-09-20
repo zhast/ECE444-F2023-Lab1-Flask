@@ -3,8 +3,12 @@
 {% block title %}Flasky{% endblock %}
 {% block page_content %}
 <div class="page-header">
-    <h1>Hello, {% if name %}{{ name }}{% else %}Stranger{% endif %}!</h1>
+    <h1>Hello, {{ name or "Stranger" }}!</h1>
+    {% if email %}
+    <h1>Your email is {{ email }}</h1>
+    {% endif %}
 </div>
+
 <form method="POST">
     {{ name_form.hidden_tag() }}
     {{ email_form.hidden_tag() }}

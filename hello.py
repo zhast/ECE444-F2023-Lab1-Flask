@@ -32,21 +32,23 @@ def index():
     name_form = NameForm()
     email_form = EmailForm()
 
-    if name_form.validate_on_submit() and email_form.validate_on_submit():
+    name = session.get('name')  # Retrieve name from session
+    email = None  # Initialize email to None
+
+    if name_form.validate_on_submit():
         old_name = session.get('name')
         if old_name is not None and old_name != name_form.name.data:
             flash('Looks like you have changed your name!')
         session['name'] = name_form.name.data
 
+    if email_form.validate_on_submit():
         email = email_form.email.data
         if email.endswith('utoronto.ca'):
             flash('Your email address is {}'.format(email))
         else:
             flash('Please enter a UofT email address')
 
-        return redirect(url_for('index'))  # Redirect after successful form submission
-
-    return render_template('index.html', name_form=name_form, email_form=email_form)
+    return render_template('index.html', name=name, email=email, name_form=name_form, email_form=email_form)
 
 
 
