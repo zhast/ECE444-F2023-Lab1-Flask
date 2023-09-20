@@ -2,9 +2,10 @@ from flask import Flask, render_template, session, redirect, url_for, flash
 from flask_bootstrap import Bootstrap
 from flask_moment import Moment
 from datetime import datetime
+
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField
-from wtforms.validators import DataRequired
+from wtforms.validators import DataRequired, Email
 
 # Made with help from Copilot
 
@@ -22,8 +23,9 @@ class NameForm(FlaskForm):
     submit = SubmitField('Submit')
 
 
+# Your form definition
 class EmailForm(FlaskForm):
-    email = StringField('What is your email?', validators=[DataRequired()])
+    email = StringField('What is your UofT Email address?', validators=[DataRequired(), Email()])
     submit = SubmitField('Submit')
 
 
@@ -33,7 +35,7 @@ def index():
     email_form = EmailForm()
 
     name = session.get('name')  # Retrieve name from session
-    email = None  # Initialize email to None
+    email = session.get('email')  # Retrieve email from session
 
     if name_form.validate_on_submit():
         old_name = session.get('name')
@@ -41,17 +43,7 @@ def index():
             flash('Looks like you have changed your name!')
         session['name'] = name_form.name.data
 
-    if email_form.validate_on_submit():
-        email = email_form.email.data
-        if email.endswith('utoronto.ca'):
-            flash('Your email address is {}'.format(email))
-        else:
-            flash('Please enter a UofT email address')
-
     return render_template('index.html', name=name, email=email, name_form=name_form, email_form=email_form)
-
-
-
 
 
 @app.route('/user/<name>')
@@ -64,7 +56,3 @@ def user(name):
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('404.html'), 404
-
-# @app.errorhandler(500)
-# def internal_server_error(e):
-#     return render_template('500.html'), 500
