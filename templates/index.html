@@ -4,10 +4,12 @@
 {% block page_content %}
 <div class="page-header">
     <h1>Hello, {{ name or "Stranger" }}!</h1>
-    {% if email %}
-    <h2>Your email is {{ email }}</h2>
     {% if not email.endswith('utoronto.ca') %}
     <h2>Please use your UofT email</h2>
+    {% else %}
+    {% if email %}
+    <h2>Your email is {{ email }}</h2>
+
     {% endif %}
     {% endif %}
 </div>
@@ -23,9 +25,12 @@
 
     <div class="form-group">
         <label for="email">Email:</label>
-        {{ wtf.form_field(email_form.email, class="form-control", id="email") }}
         {% if email_form.email.errors %}
         <p class="text-danger">{{ email_form.email.errors[0] }}</p>
+
+        <-- Else show email -->
+        {% else %}
+        {{ wtf.form_field(email_form.email, class="form-control", id="email") }}
         {% endif %}
     </div>
 
